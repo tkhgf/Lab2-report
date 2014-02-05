@@ -1,0 +1,73 @@
+<style>
+body
+{
+   background-color:#d0eaae;
+}
+
+h1
+{    
+   color:Blue;
+   text-align:center;
+}
+
+h2
+{    
+   color:orange;
+   text-align:center;
+}</style>
+
+    <script>
+          function load(val)
+    {
+
+          switch (val)
+        {
+   case "cnn": 
+       window.location.href = "http://www.cnn.com";
+       break;
+   case "w3": 
+       window.location.href = "http://www.w3schools.com";
+       break;
+   case "wallpapers": 
+       window.location.href = "http://www.wallpapers.com";
+       break;
+
+   default: 
+       break;
+                     }     
+    }
+       
+    </script>
+   
+<div data-role="header" id="Map" data-enhance="true" >
+   <h1 data-theme="f" data-fullscreen="false"> Maps </h1>
+       <div data-role="page" id="location" data-enhance="true">
+           <h2> LOCATION </h2>
+           <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+           <script>
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(locate);   
+    }  
+function locate(position)
+  {
+ var site = {
+  center:new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+  zoom:15,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+var map=new google.maps.Map(document.getElementById("googleMap"),site);
+}
+
+ google.maps.event.addDomListener(window, 'load', locate);
+</script>
+    </div> </div>
+        
+<body>            
+               <div id="googleMap" style="width:465px;height:275px"></div>
+       
+    <input type="button" name="maps" value="Maps"/>
+    <input type="button" name="news" value="News" onclick="load('cnn')">
+    <input type="button" name="studies" value="Studies" onclick="load('w3')"/>
+    <input type="button" name="images" value="Wallpapers" onclick="load('wallpapers')"/>
+    </body>    
